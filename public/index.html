@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script type="module" src="app.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/ca/ca-all.js"></script>
+  </head>
+  <body class="text-center">
+    <div id="pollBlock">
+      <div class="pollDev">
+        <p id="title">Are you a cat or a dog person?</p>
+        <br />
+        <div>
+          <label>1. Select your favorite pet?</label><br />
+          <img
+            class="imagePet"
+            id="dog"
+            src="images/dog.jpg"
+            onclick="imageClick('dog')"
+          />
+          <img
+            class="imagePet"
+            id="cat"
+            src="images/cat.jpg"
+            onclick="imageClick('cat')"
+          />
+        </div>
+        <div>
+          <label id="pollRequest">Your vote:</label>
+          <hr />
+        </div>
+      </div>
+
+      <div class="pollDev">
+        <label>2. Select your province</label>
+      </div>
+      <div>
+        <select id="country" name="country">
+          <option value="1">Alberta</option>
+          <option value="2">British Columbia</option>
+          <option value="3">Manitoba</option>
+          <option value="4">New Brunswick</option>
+          <option value="5">Newfoundland and Labrador</option>
+          <option value="6">Northwest Territories</option>
+          <option value="7">Nova Scotia</option>
+          <option value="8">Nunavut</option>
+          <option value="9">Ontario</option>
+          <option value="10">Prince Edward Island</option>
+          <option value="11">Québec</option>
+          <option value="12">Saskatchewan</option>
+          <option value="13">Yukon</option>
+        </select>
+      </div>
+
+      <hr />
+      <div class="pollDev">
+        <div>
+          <label>3. Send your vote or simply check the result</label>
+        </div>
+        <button id="submit" type="button" class="btn btn-primary btn-lg">
+          Submit
+        </button>
+        <button
+          id="results"
+          onclick="displayResults()"
+          type="button"
+          class="btn btn-success btn-lg"
+        >
+          Result
+        </button>
+
+        <hr />
+      </div>
+    </div>
+    <div id="chartsBlock" style="display:none">
+      <br />
+      <label>Canadian polls result: Dog vs Cat</label>
+      <div
+        id="containerPolls"
+        style="min-width: 310px; height: 400px; margin: 0 auto"
+      ></div>
+      <div id="containerMap"></div>
+    </div>
+  </body>
+</html>
