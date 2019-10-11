@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const config = require('config-json');
+const SqlString = require('sqlstring');
 
 config.load('config.json');
 // To get access to the production database
@@ -29,13 +30,27 @@ let query = function(query) {
     });
   });
 };
-module.exports.insertAnswers = function(country, pet) {
+/*module.exports.insertAnswers = function(country, pet) {
   return query(
     'insert into answers (`country_id`, `pet_id`) values (' +
       country +
       ', ' +
       pet +
       ');'
+  );
+};*/
+module.exports.insertAnswers = function(country, pet) {
+  console.log(
+    SqlString.format('insert into answers (country_id, pet_id) values (?, ?)', [
+      country,
+      pet
+    ])
+  );
+  return query(
+    SqlString.format('insert into answers (country_id, pet_id) values (?, ?)', [
+      country,
+      pet
+    ])
   );
 };
 

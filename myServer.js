@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const queries = require('./queries');
 
 const app = express();
-const port = 3007;
+const port = 3009;
 
 app.use(bodyParser.json()); // To support JSON-encoded bodies
 app.use(cors()); // To bypass the cross orrigine issues
